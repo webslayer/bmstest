@@ -14,10 +14,10 @@ const rentalRoutes = require('./routes/rentals'),
       reviewRoutes = require('./routes/reviews');
 
 mongoose.connect(config.DB_URI).then(() => {
-  // if (process.env.NODE_ENV !== 'production') {
-    // const fakeDb = new FakeDb();
+  if (process.env.NODE_ENV !== 'production') {
+    const fakeDb = new FakeDb();
     // fakeDb.seedDb();
-  // }
+  }
 });
 
 const app = express();
@@ -40,6 +40,7 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(appPath, 'index.html'));
   });
 }
+
 
 const PORT = process.env.PORT || 3001;
 
